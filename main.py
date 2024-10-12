@@ -12,7 +12,7 @@ dp = Dispatcher()
 
 
 async def get_weather(city_name):
-    base_url = "https://api.openweathermap.org/data/2.5/weather"
+    base_url = "https://ru.api.openweathermap.org/data/2.5/weather"
     params = {
         'q': city_name,
         'appid': openweather_api_key,
@@ -24,7 +24,6 @@ async def get_weather(city_name):
         async with aiohttp.ClientSession() as session:
             async with session.get(base_url, params=params, timeout=5) as response:
                 if response.status == 404:
-                    error_data = await response.json()
                     return f"Город не найден. Пожалуйста, проверьте название."
 
                 response.raise_for_status()
