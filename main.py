@@ -1,11 +1,16 @@
+import os
 import aiohttp
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram import F
 import asyncio
+from dotenv import load_dotenv
 
-telegram_bot_token = '8008583492:AAHJrj4dAUNPVC26ybF0pV3KsEsLrqU408k'
-openweather_api_key = '248f4bcacf83f93bd9e6a5ca199c8384'
+
+load_dotenv()
+
+telegram_bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
+openweather_api_key = os.getenv('OPENWEATHER_API_KEY')
 
 bot = Bot(token=telegram_bot_token)
 dp = Dispatcher()
